@@ -1,0 +1,47 @@
+{
+  "name": "react-native-map-webview",
+  "version": "1.0.2",
+  "description": "A React Native WebView component that displays interactive maps using Leaflet.js.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "prepare": "npm run build"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/osarinmwian/react-native-map-webview.git"
+  },
+  "keywords": [
+    "react-native",
+    "map",
+    "leaflet",
+    "webview",
+    "maps",
+    "react-native-component"
+  ],
+  "author": "Noel Osarinmwian",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/osarinmwian/react-native-map-webview/issues"
+  },
+  "homepage": "https://github.com/osarinmwian/react-native-map-webview#readme",
+  "dependencies": {
+    "leaflet": "^1.9.4",
+    "react": ">=16.8.0",
+    "react-native": ">=0.64.0",
+    "react-native-webview": "^13.13.2"
+  },
+  "devDependencies": {
+    "@types/react": ">=16.9.0",
+    "@types/react-native": ">=0.64.0",
+    "typescript": "^5.7.3"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-native": ">=0.64.0"
+  }
+}
