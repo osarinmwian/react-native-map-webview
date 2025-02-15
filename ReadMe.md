@@ -18,38 +18,21 @@ import MapWebView from 'react-native-map-webview';
 
 # Simple implementation with a single location:
 
-const locations = [
-{
-id: 1,
-latitude: 51.505,
-longitude: -0.09,
-displayName: "London",
-address: "London, UK"
-}
-];
-
-const handleMarkerPress = (location) => {
-console.log('Marker pressed:', location);
-};
-
-const MapExample = () => {
-return (
 <MapWebView
-locations={filteredLocations}
-zoomLevel={14}
-onMarkerPress={location => alert(`Clicked: ${location.displayName}`)}
-style={{ height: 400 }}
+locations={[
+{
+latitude: selectedLocation?.latitude,
+longitude: selectedLocation?.longitude,
+displayName: selectedLocation?.name,
+address: '',
+},
+]}
+centerLat={selectedLocation.latitude}
+centerLng={selectedLocation.longitude}
+zoomLevel={13}
+onMarkerPress={handleMarkerPress}
+style={{flex: 1}}
 />
-);
-};
-
-interface Location {
-id: number | string;
-latitude: number;
-longitude: number;
-displayName: string;
-address: string;
-}
 
 # Complete Example
 
