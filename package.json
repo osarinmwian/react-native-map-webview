@@ -1,6 +1,6 @@
 {
   "name": "react-native-map-webview",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A React Native WebView component that displays interactive maps using Leaflet.js.",
   "main": "dist/index.js",
   "scripts": {
