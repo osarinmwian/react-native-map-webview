@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import { StyleSheet } from 'react-native';
 import WebView from 'react-native-webview';
 import { MapWebViewProps, MapMessage } from './types';
-
 import { getMapHTML } from './map';
 
 const MapWebView: React.FC<MapWebViewProps> = ({
@@ -14,7 +13,7 @@ const MapWebView: React.FC<MapWebViewProps> = ({
   style
 }) => {
   const webViewRef = useRef<WebView>(null);
-  
+
   const defaultCenter = {
     lat: centerLat ?? locations[0]?.latitude ?? 0,
     lng: centerLng ?? locations[0]?.longitude ?? 0
@@ -47,12 +46,7 @@ const MapWebView: React.FC<MapWebViewProps> = ({
     <WebView
       ref={webViewRef}
       source={{
-        html: getMapHTML(
-          locations,
-          defaultCenter.lat,
-          defaultCenter.lng,
-          zoomLevel
-        )
+        html: getMapHTML(locations, defaultCenter.lat, defaultCenter.lng, zoomLevel)
       }}
       style={[styles.webview, style]}
       originWhitelist={['*']}

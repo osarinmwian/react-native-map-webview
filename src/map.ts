@@ -1,11 +1,11 @@
-import { MapLocation } from "./types";
+import { MapLocation } from './types';
 
 export const getMapHTML = (
-    locations: MapLocation[],
-    centerLat: number,
-    centerLng: number,
-    zoomLevel: number
-  ) => `
+  locations: MapLocation[],
+  centerLat: number,
+  centerLng: number,
+  zoomLevel: number
+) => `
   <!DOCTYPE html>
   <html>
     <head>
@@ -29,10 +29,10 @@ export const getMapHTML = (
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           attribution: '© OpenStreetMap contributors'
         }).addTo(map);
-  
+
         const locations = ${JSON.stringify(locations)};
         const markers = {};
-        
+
         locations.forEach(location => {
           const marker = L.marker([location.latitude, location.longitude])
             .addTo(map)
@@ -44,13 +44,13 @@ export const getMapHTML = (
               location: location
             }));
           });
-          
+
           markers[location.id] = marker;
         });
-  
+
         window.map = map;
         window.markers = markers;
-  
+
         window.addEventListener('message', function(event) {
           const data = JSON.parse(event.data);
           if (data.type === 'UPDATE_LOCATIONS') {
@@ -61,6 +61,14 @@ export const getMapHTML = (
                 const marker = L.marker([location.latitude, location.longitude])
                   .addTo(map)
                   .bindPopup(\`<strong>\${location.displayName}</strong><br>\${location.address}\`);
+                
+                marker.on('click', () => {
+                  window.ReactNativeWebView.postMessage(JSON.stringify({
+                    type: 'MARKER_CLICK',
+                    location: location
+                  }));
+                });
+
                 markers[location.id] = marker;
               }
             });
@@ -72,4 +80,4 @@ export const getMapHTML = (
       </script>
     </body>
   </html>
-  `;
+`;
